@@ -2,14 +2,15 @@
   "name": "karpenko-art-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "nodemon /src/app.js"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.5.0",
     "mongoose": "^5.9.19",

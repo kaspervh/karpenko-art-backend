@@ -16,6 +16,7 @@ router.put('/:id', (req, res) => {
     res.send('update picture')
 })
 
+// delete picture
 router.delete('/:id', (req, res) => {
     res.send('delete picture')
 })
