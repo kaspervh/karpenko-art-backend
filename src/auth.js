@@ -33,15 +33,15 @@ router.post('/login', async (req, res) => {
 	console.log(userName)
 	
 	const user = await User.findOne({"username": userName});
-	if(!user) return res.status(400).send('user not found');
+	if(!user) res.send({message: 'user not found'});
 
 	const validPass = await bcrypt.compare(password, user.password);
-	if(!validPass) return res.status(400).send('Password is invalid');
+	if(!validPass) res.send({message: 'Password is invalid'});
 
 	const token =  jwt.sign({_id: user._id}, process.env.SECRET_TOKEN);
 	console.log(token)
 
-	res.header('auth-token', token).send({ token: token, id: user._id})
+	res.header('auth-token', token).send({ token: token, id: user._id, message: 'user is logged in'})
 })
 
 module.exports = router;
