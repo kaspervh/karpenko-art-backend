@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const app = express();
+const cors = require('cors');
 
 
 // will allow express to read calls with body
+app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
