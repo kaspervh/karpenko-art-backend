@@ -46,7 +46,7 @@ router.patch('/:id', verify, async (req, res) => {
   }
 })
 
-router.delete('/:id', verify, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const paintingsToBeDeleted = await Paintings.deleteMany({"collection_id": req.params.id});
     const collectionToBeDeleted = await Collections.deleteOne({"_id": req.params.id})
