@@ -10,7 +10,8 @@ const PaintingsSchema = mongoose.Schema({
   },
 
   image_string:{
-    type: String
+    type: String,
+    maxlength: 1000000,
   },
 
   dimensions:{

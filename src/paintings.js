@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', verify, async (req, res) => {
   const painting = new Paintings({
     collection_id: req.body.collection_id,
     name: req.body.name,
