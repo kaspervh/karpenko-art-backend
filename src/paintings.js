@@ -35,7 +35,7 @@ router.post('/', verify, async (req, res) => {
     const newPainting = await painting.save();
     res.json(newPainting);
   } catch (error) {
-    res.status(400).send('could not create painting');
+    res.send(error)
   }
 })
 
