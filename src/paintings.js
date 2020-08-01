@@ -21,19 +21,11 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', verify, async (req, res) => {
-  const painting = new Paintings({
-    collection_id: req.body.collection_id,
-    name: req.body.name,
-    image_string: req.body.image_string,
-    dimensions: req.body.dimensions,
-    medium: req.body.medium,
-    price: req.body.price,
-    description: req.body.description
-  })
+  const paintings = req.body.paintings;
 
   try {
-    const newPainting = await painting.save();
-    res.json(newPainting);
+    const newPaintings = Paintings.insertMany(paintings)
+    res.send(newPaintings)
   } catch (error) {
     res.send(error)
   }
