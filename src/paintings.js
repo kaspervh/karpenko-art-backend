@@ -16,6 +16,7 @@ router.get('/:id', async (req, res) => {
     const painting = await Paintings.find({"_id": req.params.id})
     res.json(painting);
   } catch (error) {
+    console.log(error)
     res.status(400).send('could not find any paintings')
   }
 })
