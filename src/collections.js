@@ -6,6 +6,7 @@ const Paintings = require('../models/Paintings');
 
 // gets last collection
 router.get('/', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
   try {
     const collections = await Collections.find();
     res.send(collections)
@@ -38,11 +39,13 @@ router.post('/', verify, async (req, res) => {
 })
 
 router.patch('/:id', verify, async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
+
   try {
-    const collection = await Collections.updateOne({"_id": req.params.id}, {$set: {name: req.body.name}})
+    const collection = await Collections.updateOne({"_id": req.params.id}, {$set: {name: req.body.collectionName}})
     res.json(collection);
   } catch (error) {
-    req.status(400).send('could not update collection')
+    console.log(error)
   }
 })
 
